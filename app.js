@@ -1,3 +1,4 @@
+const cors = require('cors');
 const hpp = require('hpp');
 const express = require('express');
 const xss = require('xss-clean');
@@ -21,6 +22,11 @@ const apiLimiter = limter({
 });
 
 const app = express();
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 app.use(cookieParser());
 //body parser
 app.use(express.urlencoded({ extended: true }));
